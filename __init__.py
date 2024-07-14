@@ -11,15 +11,16 @@ else:
 
 try:
     from .db import Problems, Submissions
-    from .jugde import JugdeMode, JudgeResult, Limit, Language, Compiler
+    from .jugde import JudgeMode, JudgeResult, Limit, Language, Compiler, JudgeSession
 except ImportError:
     from db import Problems, Submissions
-    from jugde import JugdeMode, JudgeResult, Limit, Language, Compiler
+    from jugde import JudgeMode, JudgeResult, Limit, Language, Compiler, JudgeSession
 
 __all__ = [
     "Problems",
     "Submissions",
-    "JugdeMode",
+    "JudgeMode",
+    "JudgeSession",
     "JudgeResult",
     "Limit",
     "Language",
