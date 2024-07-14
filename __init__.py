@@ -11,10 +11,10 @@ else:
 
 try:
     from .db import Problems, Submissions
-    from .jugde import JudgeMode, JudgeResult, Limit, Language, Compiler, JudgeSession, Status
+    from .jugde import JudgeMode, JudgeResult, Limit, Language, Compiler, File, JudgeSession, Status
 except ImportError:
     from db import Problems, Submissions
-    from jugde import JudgeMode, JudgeResult, Limit, Language, Compiler, JudgeSession, Status
+    from jugde import JudgeMode, JudgeResult, Limit, Language, Compiler, File, JudgeSession, Status
 
 __all__ = [
     "Problems",
@@ -25,5 +25,6 @@ __all__ = [
     "Limit",
     "Language",
     "Compiler",
+    "File",
     "Status"
 ]

@@ -30,11 +30,9 @@ class BaseFile(pydantic.BaseModel):
 TestType = typing.Literal["file", "std"]
 Language: typing.List[str] = utils.read_json("data/language.json")
 Compiler = utils.read_json("data/compiler.json")
-Compiler = {key: BaseCompiler(**value) for key, value in Compiler.items()}
-# Compiler = enum.Enum("Compiler", Compiler)
+Compiler: typing.Dict[str, BaseCompiler] = {key: BaseCompiler(**value) for key, value in Compiler.items()}
 File = utils.read_json("data/file.json")
-File = {key: BaseFile(**value) for key, value in File.items()}
-# File = enum.Enum("File", File)
+File: typing.Dict[str, BaseFile] = {key: BaseFile(**value) for key, value in File.items()}
 
 
 class Status(enum.Enum):
