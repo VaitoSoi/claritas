@@ -1,11 +1,14 @@
 import os
 import shutil
 
+default = os.path.abspath("default")
+data = os.path.abspath("data")
+
 # Missing data handler
-if not os.path.exists("data"):
-    shutil.copytree("default", "data")
+if not os.path.exists(data):
+    shutil.copytree(default, data)
 else:
-    for file in os.listdir("default"):
+    for file in os.listdir(default):
         if not os.path.exists(f"data/{file}"):
             shutil.copy(f"default/{file}", f"data/{file}")
 
