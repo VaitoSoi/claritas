@@ -1,7 +1,11 @@
 import os
 import shutil
 
-parent = os.path.join(os.getcwd(), *__name__.split('.')[:-1] if __name__ != "__main__" else '')
+name = __name__
+name = name.split('.')
+if len(name) >= 2:
+    name = name[:-1]
+parent = os.path.join(os.getcwd(), *name if __name__ != "__main__" else '')
 default = os.path.join(parent, "default")
 data = os.path.join(parent, "data")
 
