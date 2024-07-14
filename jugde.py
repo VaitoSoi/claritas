@@ -2,6 +2,7 @@ import pydantic
 import enum
 import typing
 import utils
+import os
 
 __all__ = [
     "Language",
@@ -26,13 +27,24 @@ class BaseFile(pydantic.BaseModel):
     file: str
     executable: str
 
+    def model_post_init(self, *args):
+        self.executable = (
+            self.executable.format(ext=".exe" if os.name == "nt" else "")
+            if self.executable.endswith("{ext}")
+            else self.executable
+        )
+
 
 TestType = typing.Literal["file", "std"]
 Language: typing.List[str] = utils.read_json("data/language.json")
 Compiler = utils.read_json("data/compiler.json")
-Compiler: typing.Dict[str, BaseCompiler] = {key: BaseCompiler(**value) for key, value in Compiler.items()}
+Compiler: typing.Dict[str, BaseCompiler] = {
+    key: BaseCompiler(**value) for key, value in Compiler.items()
+}
 File = utils.read_json("data/file.json")
-File: typing.Dict[str, BaseFile] = {key: BaseFile(**value) for key, value in File.items()}
+File: typing.Dict[str, BaseFile] = {
+    key: BaseFile(**value) for key, value in File.items()
+}
 
 
 class Status(enum.Enum):
