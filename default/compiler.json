@@ -1,0 +1,37 @@
+{
+    "gcc": {
+        "language": ["c", "cpp"],
+        "compile": "gcc -o {executable} -O2 -Wall -fmax-errors=5 -march=native -std=c{version} {source}",
+        "execute": "./{executable}",
+        "image": "gcc:{version}",
+        "version": ["11", "12", "13", "14"]
+    },
+    "g++": {
+        "language": ["cpp"],
+        "compile": "g++ -o {executable} -O2 -Wall -fmax-errors=5 -march=native -std=c++{version} {source}",
+        "execute": "./{executable}",
+        "image": "gcc:{version}",
+        "version": ["11", "12", "13", "14"]
+    },
+    "java": {
+        "language": ["java"],
+        "compile": "javac {source}",
+        "execute": "java {filename}",
+        "image": "openjdk:{version}",
+        "version": ["8", "11", "17", "21", "22"]
+    },
+    "python": {
+        "language": ["python"],
+        "compile": "pypy -m compileall -q -b {source}",
+        "execute": "pypy {executable}",
+        "image": "pypy:{version}",
+        "version": ["2.7", "3.10", "3.11", "3.12"]
+    },
+    "pypy": {
+        "language": ["python"],
+        "compile": "python -m compileall -q -b {source}",
+        "execute": "python {executable}",
+        "image": "python:{version}",
+        "version": ["2.7", "3.9", "3.10"]
+    }
+}

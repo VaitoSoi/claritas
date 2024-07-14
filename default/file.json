@@ -1,0 +1,18 @@
+{
+    "c": {
+        "file": "{id}.c",
+        "executable": "{{id}}{ext}"
+    },
+    "cpp": {
+        "file": "{id}.cpp",
+        "executable": "{{id}}{ext}"
+    },
+    "java": {
+        "file": "{id}.java",
+        "executable": "{id}"
+    },
+    "python": {
+        "file": "{id}.py",
+        "executable": "{id}.py"
+    }
+}
