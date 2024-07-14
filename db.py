@@ -1,7 +1,12 @@
-from jugde import JugdeMode, JudgeResult, Limit
 import pydantic
 import uuid
 import typing
+
+try:
+    from .jugde import JudgeMode, JudgeResult, Limit
+except ImportError:
+    from jugde import JudgeMode, JudgeResult, Limit
+
 
 class Problems(pydantic.BaseModel):
     id: str = pydantic.Field(default_factory=lambda: str(uuid.uuid4()))
@@ -14,7 +19,8 @@ class Problems(pydantic.BaseModel):
     roles: typing.Optional[typing.List[str]] | str
     dir: str = pydantic.Field(default=None)
     limit: Limit
-    mode: JugdeMode
+    mode: JudgeMode
+
 
 class Submissions(pydantic.BaseModel):
     id: str = pydantic.Field(default_factory=lambda: str(uuid.uuid4()))
