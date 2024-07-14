@@ -1,8 +1,9 @@
 import os
 import shutil
 
-default = os.path.abspath("default")
-data = os.path.abspath("data")
+parent = os.path.join(os.getcwd(), *__name__.split('.')[:-1] if __name__ != "__main__" else '')
+default = os.path.join(parent, "default")
+data = os.path.join(parent, "data")
 
 # Missing data handler
 if not os.path.exists(data):
