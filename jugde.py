@@ -31,10 +31,10 @@ TestType = typing.Literal["file", "std"]
 Language: typing.List[str] = utils.read_json("data/language.json")
 Compiler = utils.read_json("data/compiler.json")
 Compiler = {key: BaseCompiler(**value) for key, value in Compiler.items()}
-Compiler = enum.Enum("Compiler", Compiler)
+# Compiler = enum.Enum("Compiler", Compiler)
 File = utils.read_json("data/file.json")
 File = {key: BaseFile(**value) for key, value in File.items()}
-File = enum.Enum("File", File)
+# File = enum.Enum("File", File)
 
 
 class Status(enum.Enum):
