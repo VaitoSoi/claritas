@@ -73,7 +73,7 @@ class JudgeMode(pydantic.BaseModel):
 class JudgeSession(pydantic.BaseModel):
     submission_id: str
     language: typing.Tuple[str, typing.Optional[int]]
-    compiler: typing.Tuple[str, typing.Union[typing.Literal["latest"], int]]
+    compiler: typing.Tuple[str, typing.Union[typing.Literal["latest"], str]]
     test_range: typing.Tuple[int, int]
     test_file: typing.Tuple[str, str]
     test_type: typing.Literal["file", "std"]
