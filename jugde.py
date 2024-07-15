@@ -1,8 +1,12 @@
 import pydantic
 import enum
 import typing
-import utils
 import os
+
+try:
+    from . import utils
+except ImportError:
+    import utils
 
 __all__ = [
     "Language",
@@ -35,13 +39,17 @@ class BaseFile(pydantic.BaseModel):
         )
 
 
+language_json = os.path.join(utils.data, "language.json")
+compiler_json = os.path.join(utils.data, "compiler.json")
+file_json = os.path.join(utils.data, "file.json")
+
 TestType = typing.Literal["file", "std"]
-Language: typing.List[str] = utils.read_json("data/language.json")
-Compiler = utils.read_json("data/compiler.json")
+Language: typing.List[str] = utils.read_json(language_json)
+Compiler = utils.read_json(compiler_json)
 Compiler: typing.Dict[str, BaseCompiler] = {
     key: BaseCompiler(**value) for key, value in Compiler.items()
 }
-File = utils.read_json("data/file.json")
+File = utils.read_json(file_json)
 File: typing.Dict[str, BaseFile] = {
     key: BaseFile(**value) for key, value in File.items()
 }

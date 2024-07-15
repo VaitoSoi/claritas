@@ -1,13 +1,10 @@
 import os
 import shutil
 
-name = __name__
-name = name.split('.')
-if len(name) >= 2:
-    name = name[:-1]
-parent = os.path.join(os.getcwd(), *name if __name__ != "__main__" else '')
-default = os.path.join(parent, "default")
-data = os.path.join(parent, "data")
+try:
+    from .utils import default, data
+except ImportError:
+    from utils import default, data
 
 # Missing data handler
 if not os.path.exists(data):
