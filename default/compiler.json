@@ -6,7 +6,7 @@
         "image": "gcc:{version}",
         "version": ["11", "12", "13", "14"]
     },
-    "g++": {
+    "gpp": {
         "language": ["cpp"],
         "compile": "g++ -o {executable} -O2 -Wall -fmax-errors=5 -march=native -std=c++{version} {source}",
         "execute": "./{executable}",
