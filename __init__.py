@@ -11,8 +11,8 @@ if not os.path.exists(data):
     shutil.copytree(default, data)
 else:
     for file in os.listdir(default):
-        if not os.path.exists(f"data/{file}"):
-            shutil.copy(f"default/{file}", f"data/{file}")
+        if not os.path.exists(os.path.join(data, file)):
+            shutil.copy(os.path.join(default, file), os.path.join(data, file))
 
 try:
     from .db import Problems, Submissions
