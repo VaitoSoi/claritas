@@ -15,15 +15,15 @@ else:
             shutil.copy(os.path.join(default, file), os.path.join(data, file))
 
 try:
-    from .db import Problems, Submissions
+    # from .db import Problems, Submissions
     from .jugde import JudgeMode, JudgeResult, Limit, Language, Compiler, File, JudgeSession, Status
 except ImportError:
-    from db import Problems, Submissions
+    # from db import Problems, Submissions
     from jugde import JudgeMode, JudgeResult, Limit, Language, Compiler, File, JudgeSession, Status
 
 __all__ = [
-    "Problems",
-    "Submissions",
+    # "Problems",
+    # "Submissions",
     "JudgeMode",
     "JudgeSession",
     "JudgeResult",
