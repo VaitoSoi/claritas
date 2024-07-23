@@ -22,16 +22,16 @@
     },
     "python": {
         "language": ["python"],
-        "compile": "pypy -m compileall -q -b {source}",
-        "execute": "pypy {executable}",
-        "image": "pypy:{version}",
-        "version": ["2.7", "3.10", "3.11", "3.12"]
-    },
-    "pypy": {
-        "language": ["python"],
         "compile": "python -m compileall -q -b {source}",
         "execute": "python {executable}",
         "image": "python:{version}",
         "version": ["2.7", "3.9", "3.10"]
+    },
+    "pypy": {
+        "language": ["python"],
+        "compile": "pypy -m compileall -q -b {source}",
+        "execute": "pypy {executable}",
+        "image": "pypy:{version}",
+        "version": ["2.7", "3.10", "3.11", "3.12"]
     }
 }
