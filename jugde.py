@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 
-class BaseCompiler(pydantic.BaseModel):
+class BaseCompiler(utils.Indexable):
     language: typing.List[str]
     compile: str
     execute: str
@@ -27,7 +27,7 @@ class BaseCompiler(pydantic.BaseModel):
     version: typing.List[str]
 
 
-class BaseFile(pydantic.BaseModel):
+class BaseFile(utils.Indexable):
     file: str
     executable: str
 
@@ -45,13 +45,11 @@ file_json = os.path.join(utils.data, "file.json")
 
 TestType = typing.Literal["file", "std"]
 Language: typing.List[str] = utils.read_json(language_json)
-Compiler = utils.read_json(compiler_json)
 Compiler: typing.Dict[str, BaseCompiler] = {
-    key: BaseCompiler(**value) for key, value in Compiler.items()
+    key: BaseCompiler(**value) for key, value in utils.read_json(compiler_json).items()
 }
-File = utils.read_json(file_json)
 File: typing.Dict[str, BaseFile] = {
-    key: BaseFile(**value) for key, value in File.items()
+    key: BaseFile(**value) for key, value in utils.read_json(file_json).items()
 }
 
 
@@ -67,18 +65,18 @@ class Status(enum.Enum):
     SYSTEM_ERROR = 7
 
 
-class Limit(pydantic.BaseModel):
+class Limit(utils.Indexable):
     time: int
     memory: str
 
 
-class JudgeMode(pydantic.BaseModel):
+class JudgeMode(utils.Indexable):
     mode: typing.Literal[0, 1]
     case: bool = pydantic.Field(default=None)
     trim_endl: bool = pydantic.Field(default=False)
 
 
-class JudgeSession(pydantic.BaseModel):
+class JudgeSession(utils.Indexable):
     submission_id: str
     language: typing.Tuple[str, typing.Optional[int]]
     compiler: typing.Tuple[str, typing.Union[typing.Literal["latest"], str]]
@@ -89,7 +87,7 @@ class JudgeSession(pydantic.BaseModel):
     limit: Limit
 
 
-class JudgeResult(pydantic.BaseModel):
+class JudgeResult(utils.Indexable):
     id: int
     status: int
     time: typing.Optional[float] = pydantic.Field(default=None)

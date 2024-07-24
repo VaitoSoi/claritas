@@ -1,27 +1,22 @@
-import os
-import shutil
-
 try:
-    from .utils import default, data
+    from .utils import write_default
 except ImportError:
-    from utils import default, data
+    from utils import write_default
 
 # Missing data handler
-if not os.path.exists(data):
-    shutil.copytree(default, data)
-else:
-    for file in os.listdir(default):
-        if not os.path.exists(os.path.join(data, file)):
-            shutil.copy(os.path.join(default, file), os.path.join(data, file))
+write_default()
 
 try:
     # from .db import Problems, Submissions
     from .jugde import JudgeMode, JudgeResult, Limit, Language, Compiler, File, JudgeSession, Status
+    from .utils import Indexable
 except ImportError:
     # from db import Problems, Submissions
     from jugde import JudgeMode, JudgeResult, Limit, Language, Compiler, File, JudgeSession, Status
+    from utils import Indexable
 
 __all__ = [
+    "Indexable",
     # "Problems",
     # "Submissions",
     "JudgeMode",
