@@ -1,7 +1,8 @@
-import pydantic
 import enum
-import typing
 import os
+import typing
+
+import pydantic
 
 try:
     from . import utils
@@ -43,7 +44,6 @@ language_json = os.path.join(utils.data, "language.json")
 compiler_json = os.path.join(utils.data, "compiler.json")
 file_json = os.path.join(utils.data, "file.json")
 
-TestType = typing.Literal["file", "std"]
 Language: typing.List[str] = utils.read_json(language_json)
 Compiler: typing.Dict[str, BaseCompiler] = {
     key: BaseCompiler(**value) for key, value in utils.read_json(compiler_json).items()
@@ -51,6 +51,11 @@ Compiler: typing.Dict[str, BaseCompiler] = {
 File: typing.Dict[str, BaseFile] = {
     key: BaseFile(**value) for key, value in utils.read_json(file_json).items()
 }
+
+
+class TestType(str, enum.Enum):
+    FILE = 'file'
+    STD = 'std'
 
 
 class Status(enum.Enum):
