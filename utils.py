@@ -3,7 +3,7 @@ import os
 import shutil
 import typing
 
-import pydantic
+import sqlmodel
 
 __all__ = [
     "Indexable",
@@ -26,7 +26,7 @@ default = os.path.join(parent, "default")
 data = os.path.join(parent, "data")
 
 
-class Indexable(pydantic.BaseModel):
+class Indexable(sqlmodel.SQLModel):
     """
     pydantic.BaseModel but allows for indexing like a dictionary :D
     """
