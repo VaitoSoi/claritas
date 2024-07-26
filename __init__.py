@@ -8,11 +8,11 @@ write_default()
 
 try:
     # from .db import Problems, Submissions
-    from .jugde import JudgeMode, JudgeResult, Limit, Language, Compiler, File, JudgeSession, Status
+    from .jugde import JudgeMode, JudgeResult, Limit, Language, Compiler, File, JudgeSession, Status, TestType
     from .utils import Indexable
 except ImportError:
     # from db import Problems, Submissions
-    from jugde import JudgeMode, JudgeResult, Limit, Language, Compiler, File, JudgeSession, Status
+    from jugde import JudgeMode, JudgeResult, Limit, Language, Compiler, File, JudgeSession, Status, TestType
     from utils import Indexable
 
 __all__ = [
@@ -23,6 +23,7 @@ __all__ = [
     "JudgeSession",
     "JudgeResult",
     "Limit",
+    "TestType",
     "Language",
     "Compiler",
     "File",
