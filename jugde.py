@@ -46,27 +46,27 @@ compiler_json = os.path.join(utils.data, "compiler.json")
 
 Language: typing.Union[
     typing.Dict[str, BaseLanguage],
-    typing.Dict[typing.Literal["__all__"], typing.List[str]]
+    typing.Dict[typing.Literal["all"], typing.List[str]]
 ] = pydantic.create_model(
     "Language", **{
         key:
-            BaseLanguage(**val)
+            (BaseLanguage, BaseLanguage(**val))
             if isinstance(val, dict) else
-            val
+            (type(val), val)
         for key, val in
         utils.read_json(language_json).items()
     })
 Compiler: typing.Union[
     typing.Dict[str, BaseCompiler],
-    typing.Dict[typing.LiteralString["__all__"], typing.List[str]]
+    typing.Dict[typing.Literal["all"], typing.List[str]]
 ] = pydantic.create_model(
     "Compiler", **{
         key:
-            BaseCompiler(**val)
+            (BaseCompiler, BaseCompiler(**val))
             if isinstance(val, dict) else
-            val
+            (type(val), val)
         for key, val in
-        utils.read_json(language_json).items()
+        utils.read_json(compiler_json).items()
     })
 
 

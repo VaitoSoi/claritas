@@ -1,5 +1,5 @@
 {
-    "__all__": ["c", "cpp", "java", "python"],
+    "all": ["c", "cpp", "java", "python"],
     "c": {
         "file": "{id}.c",
         "executable": "{{id}}{ext}",
