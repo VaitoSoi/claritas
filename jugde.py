@@ -31,7 +31,7 @@ class BaseCompiler(utils.Indexable):
 class BaseLanguage(utils.Indexable):
     file: str
     executable: str
-    version: typing.List[str]
+    version: typing.Optional[typing.List[str]]
 
     def model_post_init(self, *args):
         self.executable = (
