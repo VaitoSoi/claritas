@@ -1,4 +1,5 @@
 {
+    "__all__": ["gcc", "gpp", "java", "python", "pypy"],
     "gcc": {
         "language": ["c", "cpp"],
         "compile": "gcc -o {executable} -O2 -Wall -fmax-errors=5 -march=native -std=c{version} {source}",

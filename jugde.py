@@ -28,9 +28,10 @@ class BaseCompiler(utils.Indexable):
     version: typing.List[str]
 
 
-class BaseFile(utils.Indexable):
+class BaseLanguage(utils.Indexable):
     file: str
     executable: str
+    version: typing.List[str]
 
     def model_post_init(self, *args):
         self.executable = (
@@ -42,15 +43,31 @@ class BaseFile(utils.Indexable):
 
 language_json = os.path.join(utils.data, "language.json")
 compiler_json = os.path.join(utils.data, "compiler.json")
-file_json = os.path.join(utils.data, "file.json")
 
-Language: typing.List[str] = utils.read_json(language_json)
-Compiler: typing.Dict[str, BaseCompiler] = {
-    key: BaseCompiler(**value) for key, value in utils.read_json(compiler_json).items()
-}
-File: typing.Dict[str, BaseFile] = {
-    key: BaseFile(**value) for key, value in utils.read_json(file_json).items()
-}
+Language: typing.Union[
+    typing.Dict[str, BaseLanguage],
+    typing.Dict[typing.Literal["__all__"], typing.List[str]]
+] = pydantic.create_model(
+    "Language", **{
+        key:
+            BaseLanguage(**val)
+            if isinstance(val, dict) else
+            val
+        for key, val in
+        utils.read_json(language_json).items()
+    })
+Compiler: typing.Union[
+    typing.Dict[str, BaseCompiler],
+    typing.Dict[typing.LiteralString["__all__"], typing.List[str]]
+] = pydantic.create_model(
+    "Compiler", **{
+        key:
+            BaseCompiler(**val)
+            if isinstance(val, dict) else
+            val
+        for key, val in
+        utils.read_json(language_json).items()
+    })
 
 
 class TestType(str, enum.Enum):
