@@ -21,6 +21,7 @@ __all__ = [
 
 
 class BaseCompiler(utils.Indexable):
+    name: str
     language: typing.List[str]
     compile: str
     execute: str
@@ -29,6 +30,7 @@ class BaseCompiler(utils.Indexable):
 
 
 class BaseLanguage(utils.Indexable):
+    name: str
     file: str
     executable: str
     version: typing.Optional[typing.List[str]]

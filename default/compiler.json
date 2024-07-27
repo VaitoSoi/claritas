@@ -1,6 +1,7 @@
 {
     "all": ["gcc", "gpp", "java", "python", "pypy"],
     "gcc": {
+        "name": "gcc",
         "language": ["c", "cpp"],
         "compile": "gcc -o {executable} -O2 -Wall -fmax-errors=5 -march=native -std=c{version} {source}",
         "execute": "./{executable}",
@@ -8,6 +9,7 @@
         "version": ["11", "12", "13", "14"]
     },
     "gpp": {
+        "name": "g++",
         "language": ["cpp"],
         "compile": "g++ -o {executable} -O2 -Wall -fmax-errors=5 -march=native -std=c++{version} {source}",
         "execute": "./{executable}",
@@ -15,6 +17,7 @@
         "version": ["11", "12", "13", "14"]
     },
     "java": {
+        "name": "java",
         "language": ["java"],
         "compile": "javac {source}",
         "execute": "java {filename}",
@@ -22,6 +25,7 @@
         "version": ["8", "11", "17", "21", "22"]
     },
     "python": {
+        "name": "python",
         "language": ["python"],
         "compile": "python -m compileall -q -b {source}",
         "execute": "python {executable}",
@@ -29,6 +33,7 @@
         "version": ["2.7", "3.9", "3.10"]
     },
     "pypy": {
+        "name": "pypy",
         "language": ["python"],
         "compile": "pypy -m compileall -q -b {source}",
         "execute": "pypy {executable}",

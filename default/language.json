@@ -1,21 +1,25 @@
 {
     "all": ["c", "cpp", "java", "python"],
     "c": {
+        "name": "c",
         "file": "{id}.c",
         "executable": "{{id}}{ext}",
         "version": ["11", "14", "17", "20"]
     },
     "cpp": {
+        "name": "c++",
         "file": "{id}.cpp",
         "executable": "{{id}}{ext}",
         "version": ["11", "14", "17", "20"]
     },
     "java": {
+        "name": "java",
         "file": "{id}.java",
         "executable": "{id}",
         "version": ["8", "11", "17", "21", "22"]
     },
     "python": {
+        "name": "python",
         "file": "{id}.py",
         "executable": "{id}.py",
         "version": null
