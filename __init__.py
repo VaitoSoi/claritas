@@ -1,21 +1,25 @@
 try:
-    from .utils import write_default
+    from . import utils
 except ImportError:
-    from utils import write_default
+    import utils
 
 # Missing data handler
-write_default()
+utils.write_default()
 
 try:
     # from .db import Problems, Submissions
+    from . import jugde
     from .jugde import JudgeMode, JudgeResult, Limit, Language, Compiler, JudgeSession, Status, TestType
     from .utils import Indexable
 except ImportError:
     # from db import Problems, Submissions
+    import judge
     from jugde import JudgeMode, JudgeResult, Limit, Language, Compiler, JudgeSession, Status, TestType
     from utils import Indexable
 
 __all__ = [
+    "utils",
+    "judge",
     "Indexable",
     # "Problems",
     # "Submissions",
