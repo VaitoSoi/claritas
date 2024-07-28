@@ -49,25 +49,31 @@ compiler_json = os.path.join(utils.data, "compiler.json")
 Language: typing.Union[
     typing.Dict[str, BaseLanguage],
     typing.Dict[typing.Literal["all"], typing.List[str]]
-] = {
-    key:
-        BaseLanguage(**val)
-        if isinstance(val, dict) else
-        val
-    for key, val in
-    utils.read_json(language_json).items()
-}
+]
 Compiler: typing.Union[
     typing.Dict[str, BaseCompiler],
     typing.Dict[typing.Literal["all"], typing.List[str]]
-] = {
-    key:
-        BaseCompiler(**val)
-        if isinstance(val, dict) else
-        val
-    for key, val in
-    utils.read_json(compiler_json).items()
-}
+]
+
+
+def load():
+    global Language, Compiler
+    Language = {
+        key:
+            BaseLanguage(**val)
+            if isinstance(val, dict) else
+            val
+        for key, val in
+        utils.read_json(language_json).items()
+    }
+    Compiler = {
+        key:
+            BaseCompiler(**val)
+            if isinstance(val, dict) else
+            val
+        for key, val in
+        utils.read_json(compiler_json).items()
+    }
 
 
 class TestType(str, enum.Enum):
