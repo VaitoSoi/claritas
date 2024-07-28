@@ -109,9 +109,15 @@ class JudgeSession(utils.Indexable):
     limit: Limit
 
 
+class SystemResult(utils.Indexable):
+    position: typing.Literal["system", "compiler", "overall"]
+    status: int
+    warn: typing.Optional[str] = pydantic.Field(default=None)
+    error: typing.Optional[str] = pydantic.Field(default=None)
+
+
 class JudgeResult(utils.Indexable):
     id: int
     status: int
     time: typing.Optional[float] = pydantic.Field(default=None)
-    warn: typing.Optional[str] = pydantic.Field(default=None)
     error: typing.Optional[str] = pydantic.Field(default=None)
