@@ -8,13 +8,13 @@ utils.write_default()
 
 try:
     # from .db import Problems, Submissions
-    from . import jugde
-    from .jugde import JudgeMode, JudgeResult, SystemResult, Limit, Language, Compiler, JudgeSession, Status, TestType
+    from . import judge
+    from .judge import JudgeMode, JudgeResult, SystemResult, Limit, Language, Compiler, JudgeSession, Status, TestType
     from .utils import Indexable
 except ImportError:
     # from db import Problems, Submissions
     import judge
-    from jugde import JudgeMode, JudgeResult, SystemResult, Limit, Language, Compiler, JudgeSession, Status, TestType
+    from judge import JudgeMode, JudgeResult, SystemResult, Limit, Language, Compiler, JudgeSession, Status, TestType
     from utils import Indexable
 
 __all__ = [
