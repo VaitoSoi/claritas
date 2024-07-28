@@ -49,27 +49,25 @@ compiler_json = os.path.join(utils.data, "compiler.json")
 Language: typing.Union[
     typing.Dict[str, BaseLanguage],
     typing.Dict[typing.Literal["all"], typing.List[str]]
-] = pydantic.create_model(
-    "Language", **{
-        key:
-            (BaseLanguage, BaseLanguage(**val))
-            if isinstance(val, dict) else
-            (type(val), val)
-        for key, val in
-        utils.read_json(language_json).items()
-    })
+] = {
+    key:
+        (BaseLanguage, BaseLanguage(**val))
+        if isinstance(val, dict) else
+        (type(val), val)
+    for key, val in
+    utils.read_json(language_json).items()
+}
 Compiler: typing.Union[
     typing.Dict[str, BaseCompiler],
     typing.Dict[typing.Literal["all"], typing.List[str]]
-] = pydantic.create_model(
-    "Compiler", **{
-        key:
-            (BaseCompiler, BaseCompiler(**val))
-            if isinstance(val, dict) else
-            (type(val), val)
-        for key, val in
-        utils.read_json(compiler_json).items()
-    })
+] = {
+    key:
+        (BaseCompiler, BaseCompiler(**val))
+        if isinstance(val, dict) else
+        (type(val), val)
+    for key, val in
+    utils.read_json(compiler_json).items()
+}
 
 
 class TestType(str, enum.Enum):
