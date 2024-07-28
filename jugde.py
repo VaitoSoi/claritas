@@ -51,9 +51,9 @@ Language: typing.Union[
     typing.Dict[typing.Literal["all"], typing.List[str]]
 ] = {
     key:
-        (BaseLanguage, BaseLanguage(**val))
+        BaseLanguage(**val)
         if isinstance(val, dict) else
-        (type(val), val)
+        val
     for key, val in
     utils.read_json(language_json).items()
 }
@@ -62,9 +62,9 @@ Compiler: typing.Union[
     typing.Dict[typing.Literal["all"], typing.List[str]]
 ] = {
     key:
-        (BaseCompiler, BaseCompiler(**val))
+        BaseCompiler(**val)
         if isinstance(val, dict) else
-        (type(val), val)
+        val
     for key, val in
     utils.read_json(compiler_json).items()
 }
