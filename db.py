@@ -3,9 +3,9 @@
 # import typing
 #
 # try:
-#     from .jugde import JudgeMode, JudgeResult, Limit
+#     from .judge import JudgeMode, JudgeResult, Limit
 # except ImportError:
-#     from jugde import JudgeMode, JudgeResult, Limit
+#     from judge import JudgeMode, JudgeResult, Limit
 #
 #
 # class Problems(pydantic.BaseModel):
