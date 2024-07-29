@@ -120,3 +120,4 @@ class JudgeResult(utils.Indexable):
     status: int
     time: typing.Optional[float] = pydantic.Field(default=None)
     error: typing.Optional[str] = pydantic.Field(default=None)
+    warn: typing.Optional[str] = pydantic.Field(default=None)
