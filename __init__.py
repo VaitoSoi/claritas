@@ -14,11 +14,11 @@ judge.load()
 try:
     # from .db import Problems, Submissions
     from .judge import JudgeMode, JudgeResult, Limit, Language, Compiler, JudgeSession, Status, TestType
-    from .utils import Indexable
+    from .utils import Indexable, PydanticIndexable
 except ImportError:
     # from db import Problems, Submissions
     from judge import JudgeMode, JudgeResult, Limit, Language, Compiler, JudgeSession, Status, TestType
-    from utils import Indexable
+    from utils import Indexable, PydanticIndexable
 
 __all__ = [
     "utils",
