@@ -4,6 +4,7 @@ import shutil
 import typing
 
 import sqlmodel
+import pydantic
 
 __all__ = [
     "Indexable",
@@ -27,6 +28,15 @@ data = os.path.join(parent, "data")
 
 
 class Indexable(sqlmodel.SQLModel):
+    """
+    sqlmodel.SQLModel but allows for indexing like a dictionary :D
+    """
+
+    def __getitem__(self, item):
+        return getattr(self, item)
+
+
+class PydanticIndexable(pydantic.BaseModel):
     """
     pydantic.BaseModel but allows for indexing like a dictionary :D
     """
