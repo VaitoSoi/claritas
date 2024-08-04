@@ -81,7 +81,7 @@ class TestType(str, enum.Enum):
     STD = 'std'
 
 
-class Status(enum.Enum):
+class Status(enum.IntEnum):
     ABORTED = -1
     ACCEPTED = 0
     WRONG_ANSWER = 1
@@ -91,6 +91,8 @@ class Status(enum.Enum):
     RUNTIME_ERROR = 5
     COMPILE_ERROR = 6
     SYSTEM_ERROR = 7
+    UNKNOWN_ERROR = 8
+    OVERALL = 9
 
 
 class Limit(utils.Indexable):
@@ -119,5 +121,6 @@ class JudgeResult(utils.Indexable):
     position: typing.Literal["system", "compiler", "overall"] | int
     status: int
     time: typing.Optional[float] = pydantic.Field(default=None)
+    memory: typing.Optional[tuple[float, float]] = pydantic.Field(default=None)
     error: typing.Optional[str] = pydantic.Field(default=None)
     warn: typing.Optional[str] = pydantic.Field(default=None)
