@@ -4,10 +4,7 @@ import typing
 
 import pydantic
 
-try:
-    from . import utils
-except ImportError:
-    import utils
+from . import utils
 
 __all__ = [
     "Language",

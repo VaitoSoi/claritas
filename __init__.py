@@ -1,9 +1,6 @@
-try:
-    from . import utils
-    from . import judge
-except ImportError:
-    import utils
-    import judge
+from . import judge
+from . import utils
+# from .db import Problems, Submissions
 
 # Missing data handler
 utils.write_default()
@@ -11,14 +8,9 @@ utils.write_default()
 # Load language and compiler data
 judge.load()
 
-try:
-    # from .db import Problems, Submissions
-    from .judge import JudgeMode, JudgeResult, Limit, Language, Compiler, JudgeSession, Status, TestType
-    from .utils import Indexable, PydanticIndexable
-except ImportError:
-    # from db import Problems, Submissions
-    from judge import JudgeMode, JudgeResult, Limit, Language, Compiler, JudgeSession, Status, TestType
-    from utils import Indexable, PydanticIndexable
+
+from .utils import Indexable, PydanticIndexable
+from .judge import JudgeMode, JudgeResult, Limit, Language, Compiler, JudgeSession, Status, TestType
 
 __all__ = [
     "utils",
