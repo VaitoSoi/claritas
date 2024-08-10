@@ -4,20 +4,20 @@ import typing
 
 import pydantic
 
-from . import utils
+from . import utils, models
 
 __all__ = [
     "Language",
     "Compiler",
     "TestType",
-    "Status",
+    "StatusCode",
     "Limit",
     "JudgeMode",
     "JudgeResult",
 ]
 
 
-class BaseCompiler(utils.Indexable):
+class BaseCompiler(models.PydanticIndexable):
     name: str
     language: typing.List[str]
     compile: str
@@ -26,7 +26,7 @@ class BaseCompiler(utils.Indexable):
     version: typing.List[str]
 
 
-class BaseLanguage(utils.Indexable):
+class BaseLanguage(models.PydanticIndexable):
     name: str
     file: str
     executable: str
@@ -78,7 +78,7 @@ class TestType(str, enum.Enum):
     STD = 'std'
 
 
-class Status(enum.IntEnum):
+class StatusCode(enum.IntEnum):
     ABORTED = -1
     ACCEPTED = 0
     WRONG_ANSWER = 1
@@ -92,18 +92,18 @@ class Status(enum.IntEnum):
     OVERALL = 9
 
 
-class Limit(utils.Indexable):
+class Limit(models.PydanticIndexable):
     time: int
     memory: str
 
 
-class JudgeMode(utils.Indexable):
+class JudgeMode(models.PydanticIndexable):
     mode: typing.Literal[0, 1]
     case: bool = pydantic.Field(default=None)
     trim_endl: bool = pydantic.Field(default=False)
 
 
-class JudgeSession(utils.Indexable):
+class JudgeSession(models.PydanticIndexable):
     submission_id: str
     language: typing.Tuple[str, typing.Optional[int]]
     compiler: typing.Tuple[str, typing.Union[typing.Literal["latest"], str]]
@@ -114,7 +114,7 @@ class JudgeSession(utils.Indexable):
     limit: Limit
 
 
-class JudgeResult(utils.Indexable):
+class JudgeResult(models.PydanticIndexable):
     position: typing.Literal["system", "compiler", "overall"] | int
     status: int
     time: typing.Optional[float] = pydantic.Field(default=None)
