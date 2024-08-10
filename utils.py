@@ -3,11 +3,7 @@ import os
 import shutil
 import typing
 
-import sqlmodel
-import pydantic
-
 __all__ = [
-    "Indexable",
     "read",
     "write",
     "read_json",
@@ -25,24 +21,6 @@ if len(name) >= 2:
 parent = os.path.join(os.getcwd(), *name if __name__ != "__main__" else '')
 default = os.path.join(parent, "default")
 data = os.path.join(parent, "data")
-
-
-class Indexable(sqlmodel.SQLModel):
-    """
-    sqlmodel.SQLModel but allows for indexing like a dictionary :D
-    """
-
-    def __getitem__(self, item):
-        return getattr(self, item)
-
-
-class PydanticIndexable(pydantic.BaseModel):
-    """
-    pydantic.BaseModel but allows for indexing like a dictionary :D
-    """
-
-    def __getitem__(self, item):
-        return getattr(self, item)
 
 
 def read(file: str) -> str:

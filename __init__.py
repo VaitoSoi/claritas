@@ -1,5 +1,4 @@
-from . import judge
-from . import utils
+from . import judge, utils, models
 # from .db import Problems, Submissions
 
 # Missing data handler
@@ -9,13 +8,16 @@ utils.write_default()
 judge.load()
 
 
-from .utils import Indexable, PydanticIndexable
-from .judge import JudgeMode, JudgeResult, Limit, Language, Compiler, JudgeSession, Status, TestType
+from .models import Indexable, PydanticIndexable, Status
+from .judge import JudgeMode, JudgeResult, Limit, Language, Compiler, JudgeSession, StatusCode, TestType
 
 __all__ = [
     "utils",
     "judge",
+    "models",
     "Indexable",
+    "PydanticIndexable",
+    "Status",
     # "Problems",
     # "Submissions",
     "JudgeMode",
@@ -25,5 +27,5 @@ __all__ = [
     "TestType",
     "Language",
     "Compiler",
-    "Status"
+    "StatusCode"
 ]
