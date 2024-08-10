@@ -47,5 +47,5 @@ class SystemInformation(PydanticIndexable):
 
 class Status(PydanticIndexable):
     status: typing.Literal["idle", "busy"]
-    progress: str = pydantic.Field(default=None)
+    progress: str | None = pydantic.Field(default=None)
     system: SystemInformation = pydantic.Field(default_factory=lambda: SystemInformation())
