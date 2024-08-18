@@ -111,12 +111,15 @@ class JudgeSession(models.PydanticIndexable):
     test_file: typing.Tuple[str, str]
     test_type: typing.Literal["file", "std"]
     judge_mode: JudgeMode
+    point: float
     limit: Limit
 
 
 class JudgeResult(models.PydanticIndexable):
-    position: int
+    position: typing.Literal["system", "compiler", "overall"] | int
     status: int
     time: typing.Optional[float] = pydantic.Field(default=None)
     memory: typing.Optional[tuple[float, float]] = pydantic.Field(default=None)
     error: typing.Optional[str] = pydantic.Field(default=None)
+    warn: typing.Optional[str] = pydantic.Field(default=None)
+    point: typing.Optional[float] = pydantic.Field(default=None)
