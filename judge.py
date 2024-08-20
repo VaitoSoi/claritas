@@ -116,10 +116,9 @@ class JudgeSession(models.PydanticIndexable):
 
 
 class JudgeResult(models.PydanticIndexable):
-    position: typing.Literal["system", "compiler", "overall"] | int
+    position: int
     status: int
-    time: typing.Optional[float] = pydantic.Field(default=None)
-    memory: typing.Optional[tuple[float, float]] = pydantic.Field(default=None)
-    error: typing.Optional[str] = pydantic.Field(default=None)
-    warn: typing.Optional[str] = pydantic.Field(default=None)
-    point: typing.Optional[float] = pydantic.Field(default=None)
+    time: float | None = pydantic.Field(default=None)
+    memory: tuple[float, float] | None = pydantic.Field(default=None)
+    error: str | None = pydantic.Field(default=None)
+    point: float | None = pydantic.Field(default=None)
