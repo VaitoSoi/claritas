@@ -10,7 +10,7 @@ judge.load()
 
 from .db import Permission
 from .models import Indexable, PydanticIndexable, Status
-from .judge import JudgeMode, JudgeResult, Limit, Language, Compiler, JudgeSession, StatusCode, TestType
+from .judge import JudgeMode, JudgeResult, Limit, Language, Compiler, JudgeSession, StatusCode  # TestType
 
 __all__ = [
     "db",
@@ -24,7 +24,7 @@ __all__ = [
     "JudgeSession",
     "JudgeResult",
     "Limit",
-    "TestType",
+    # "TestType",
     "Language",
     "Compiler",
     "Permission",

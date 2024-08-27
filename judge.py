@@ -9,7 +9,7 @@ from . import utils, models
 __all__ = [
     "Language",
     "Compiler",
-    "TestType",
+    # "TestType",
     "StatusCode",
     "Limit",
     "JudgeMode",
@@ -73,9 +73,9 @@ def load():
     }
 
 
-class TestType(str, enum.Enum):
-    FILE = 'file'
-    STD = 'std'
+# class TestType(str, enum.Enum):
+#     FILE = 'file'
+#     STD = 'std'
 
 
 class StatusCode(enum.IntEnum):
@@ -84,7 +84,7 @@ class StatusCode(enum.IntEnum):
     WRONG_ANSWER = 1
     TIME_LIMIT_EXCEEDED = 2
     MEMORY_LIMIT_EXCEEDED = 3
-    COMPILE_WARN = 4
+    JUDGER_ERROR = 4
     RUNTIME_ERROR = 5
     COMPILE_ERROR = 6
     SYSTEM_ERROR = 7
@@ -122,3 +122,4 @@ class JudgeResult(models.PydanticIndexable):
     memory: tuple[float, float] | None = pydantic.Field(default=None)
     error: str | None = pydantic.Field(default=None)
     point: float | None = pydantic.Field(default=None)
+    feedback: str | None = pydantic.Field(default=None)
