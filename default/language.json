@@ -21,7 +21,7 @@
     "python": {
         "name": "Python",
         "file": "{id}.py",
-        "executable": "{id}.py",
+        "executable": "{id}.pyc",
         "version": null
     }
 }
