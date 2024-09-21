@@ -2,11 +2,11 @@
     "all": ["gcc", "gpp", "java", "python", "pypy"],
     "gcc": {
         "name": "GCC",
-        "language": ["c", "cpp"],
+        "language": ["c"],
         "compile": "gcc -o {executable} -O2 -Wall -fmax-errors=5 -march=native -std=c{version} {source}",
         "execute": "./{executable}",
         "image": "gcc:{version}",
-        "version": ["11", "12", "13", "14"]
+        "version": ["12", "13", "14"]
     },
     "gpp": {
         "name": "G++",
@@ -14,7 +14,7 @@
         "compile": "g++ -o {executable} -O2 -Wall -fmax-errors=5 -march=native -std=c++{version} {source}",
         "execute": "./{executable}",
         "image": "gcc:{version}",
-        "version": ["11", "12", "13", "14"]
+        "version": ["12", "13", "14"]
     },
     "java": {
         "name": "Java",
